@@ -1,0 +1,88 @@
+#include<iostream>
+using namespace std;
+class books{
+public:
+	int book;
+	string author;
+	string title;
+	books( int c,string a,string b) {
+		book = c;
+		author=a;
+		title = b;
+	 }
+	void setauthor(string a) {
+		author = a;
+	}
+	void settitle(string b) {
+		title = b;
+	}
+	string getauthor() {
+		return author;
+	}
+	string gettitle() {
+		return title;
+	}
+};
+class library {
+	int book=0;
+	books *Book[100];
+public:
+	void addbooks(books* c) {
+		Book[book] = c;
+		book++;
+		cout << "New book has been added";
+	}
+	void removebook(books* c) {
+		for (int i = 0; i < book; i++) {
+			if (Book[i] == c) {
+				delete Book[i];
+			}
+			for (int j = i; j < book - 1; j++) {
+				Book[j] = Book[j + 1];
+				cout << "\nBook Deleted\n";
+			}
+		}
+	}
+	void searchauthor(string b) {
+		for (int i = 0; i < book; i++) {
+			if (Book[i]->getauthor() == b) {
+				cout << "Book is found." << endl;
+				cout << "Title is: " << Book[i]->getauthor() << endl << "Author is: " << Book[i]->gettitle() << endl;
+				return;
+			}
+			else {
+				cout << "book not found";
+			}
+		}
+	}
+	void bytile(string c) {
+		for (int i = 0; i < book; i++) {
+			if (Book[i]->gettitle() == c) {
+				cout << "title  is found." << endl;
+				cout << "Title is: " << Book[i]->getauthor() << endl << "Author is: " << Book[i]->gettitle() << endl;
+				return;
+			}
+			else {
+				cout << " book not found";
+			}
+		}
+	}
+	
+};
+int main() {
+	books book1(1, "cpp", "annie");
+	books book2(2, "oop", "deitel");
+	books book3(2, "dld", "deitel");
+	
+	library library1;
+	library1.addbooks (&book1);
+	library1.addbooks(&book2);
+	library1.addbooks(&book3);
+	library1.bytile("annie");
+	library1.searchauthor("cpp");
+	library1.removebook(&book1);
+	library1.bytile("deitel");
+	return 0;
+}
+
+ 

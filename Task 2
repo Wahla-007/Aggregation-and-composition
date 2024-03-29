@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+class dept {
+private:
+	int faculty;
+	int student;
+	string courses;
+public:
+	dept(int a, int b, string c) {
+		faculty = a; student = b; courses = c;
+	}
+	string getcourse() {
+		return courses;
+	}
+	int getfaculty() {
+		return faculty;
+	}
+	int getstud() {
+		return student;
+	}
+};
+class uni {
+	
+	dept* dd;
+public:
+	void show(dept* c) const  {
+		cout << "Number of studets:" <<c->getstud()<<endl;
+		cout << "Number of faculty member:" << c->getfaculty() << endl;
+		cout << "Courses offered: " << c->getcourse() << endl;
+	}
+
+};
+int main() {
+	dept a(1, 1, "cs");
+	dept b(1, 2, "mech");
+	dept c(3, 3, "elec");
+	uni devs;
+	devs.show(&a);
+	devs.show(&b);
+	devs.show(&c);
+
+}

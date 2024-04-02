@@ -1,0 +1,129 @@
+//#include<iostream>
+//using namespace std;
+//class person {
+//private :
+//	string name;
+//	int *id;
+//public:
+//	person(){}
+//	person(string _name,int _id) {
+//		name = _name;
+//
+//		id = new int;
+//		*id = _id;
+//	}
+//	person(const person& other) {
+//		/*name = other.name;
+//		id = other.id;*/			//	shallow
+//
+//
+//		//deep
+//		name = other.name;
+//		id = new int;
+//		*id = *other.id;
+//	}
+//	 void show_data()const {
+//		cout << "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n";
+//		cout << "\nName: " << name << endl;
+//		cout << "\nID: " << *id <<" having address: "<<id<< endl;
+//		cout << "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n";
+//	 }
+//	 void set(int  id_) {
+//		 *id = id_;
+//	 }
+//	 ~person() {
+//		 delete id;
+//		 id = nullptr;
+//	 }
+//};
+//int main() {
+//	person p1{ "arham",1 };
+//	p1.show_data();
+//	p1.set(2);
+//	p1.show_data();
+//
+//
+//
+//	person p2{ p1 };
+//	p1.show_data();
+//
+//	p2.set(9999);
+//	p2.show_data();
+//
+//	p1.show_data();
+//
+//
+//
+//}
+
+
+
+//
+#include<iostream>
+using namespace std;
+class person {
+private:
+	string name;
+	int* id;
+public:
+	person() {}
+	person(string _name, int _id) {
+		name = _name;
+
+		id = new int;
+		*id = _id;
+	}
+	//person(const person& other) {
+	//	/*name = other.name;
+	//	id = other.id;*/			//	shallow
+
+
+	//	//deep
+	//	name = other.name;
+	//	id = new int;
+	//	*id = *other.id;
+	//}
+	void show_data()const {
+		cout << "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n";
+		cout << "\nName: " << name << endl;
+		cout << "\nID: " << *id << " having address: " << id << endl;
+		cout << "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n";
+	}
+	void set(int  id_) {
+		*id = id_;
+	}
+	~person() {
+		delete id;
+		id = nullptr;
+	}
+
+
+	string get_name() const {
+		return name;
+	}
+	person & get_name()  {
+		return *this;
+	}
+};
+
+
+int main() {
+	person p1{ "arham",1 };
+	p1.show_data();
+	p1.set(2);
+	p1.show_data();
+	cout << "--------------------------------------"<<endl;
+	p1.get_name().get_name().show_data();
+	cout << "--------------------------------------" << endl;
+
+	person p2{ p1 };
+	p1.show_data();
+
+	p2.set(9999);
+	p2.show_data();
+
+	p1.show_data();
+
+
+	
+}
